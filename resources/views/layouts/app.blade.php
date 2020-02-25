@@ -34,28 +34,20 @@
             </div>
             <div class="nav-menu">
                 <nav class="main-menu mobile-menu">
+                    <ul>
                     @if (Auth::check())
-                        <ul>
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="about-me.html">About Me</a></li>
-                                    <li><a href="categories.html">Categories</a></li>
-                                    <li><a href="recipe.html">Recipe</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="recipe.html">Recipes</a></li>
-                            <li><a href="categories.html">Best Of</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
+                        <li class="active"><a href="#">お店を探す</a></li>
+                        <li><a href="#">{{ Auth::user()->name }}</a>
+                            <ul class="sub-menu">
+                                <li><a href="about-me.html">プロフィール設定</a></li>
+                                <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                            </ul>
+                        </li>
                     @else
-                        <ul>
-                            <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
-                            <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-                        </ul>
+                        <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
+                        <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                     @endif
+                    </ul>
                 </nav>
             </div>
             <div id="mobile-menu-wrap"></div>
