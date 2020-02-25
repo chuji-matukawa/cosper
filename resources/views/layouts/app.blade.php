@@ -39,7 +39,7 @@
                         <li class="active"><a href="#">お店を探す</a></li>
                         <li><a href="#">{{ Auth::user()->name }}</a>
                             <ul class="sub-menu">
-                                <li><a href="about-me.html">プロフィール設定</a></li>
+                                <li>{!! link_to_route('users.show', 'プロフィール設定', ['id' => Auth::id()]) !!}</li>
                                 <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                             </ul>
                         </li>
