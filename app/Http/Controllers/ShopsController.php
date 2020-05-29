@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use \App\Shop;
+use \App\Review;
 
 class ShopsController extends Controller
 {
@@ -25,7 +28,7 @@ class ShopsController extends Controller
             
             'keyword' => $keyword,
             'areaCode' => $areaCode,
-            'genre' => $genre
+            'category' => $genre
         ]);
     }
     
@@ -36,10 +39,15 @@ class ShopsController extends Controller
         $params = [
             'format' => 'json',
             'key'    => $this->apiKey,
+            
         ];
         
         // キーワード条件加
-        
+        if(!empty($keyword)){
+            $params['keyword'] = $keyword;
+        }else{
+            $params['keyword'] = "東京駅"; // 東京駅
+        }
         
         
         // エリア検索追加
@@ -50,7 +58,11 @@ class ShopsController extends Controller
         }
         
         // ジャンル検索追加
-        
+        if(!empty($genre)){
+            $params['genre'] = $genre;
+        }else{
+            $params['genre'] = "G002"; // バー
+        }
         
         
         $query = http_build_query($params, "", "&");
@@ -77,5 +89,13 @@ class ShopsController extends Controller
         $response = json_decode($response_json);
         
         return $response;
+    }
+    
+    public function show($apiShopId)
+    {
+        $shop = Shop::getShopByApiShopId($apiShopId);
+        $reviews = Review::where('shop_id', $apiShopId )->get();
+        
+        return view('shops.show', ['shop' => $shop,'reviews' => $reviews]);
     }
 }

@@ -13,11 +13,11 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -30,13 +30,13 @@
     <header class="header-section-other">
         <div class="container-fluid">
             <div class="logo">
-                <a href="./index.html"><img src="img/little-logo.png" alt=""></a>
+                <a href="/"><img src="/img/little-logo.png" alt=""></a>
             </div>
             <div class="nav-menu">
                 <nav class="main-menu mobile-menu">
                     <ul>
                     @if (Auth::check())
-                        <li class="active"><a href="#">お店を探す</a></li>
+                        <li><a href="/">お店を探す</a></li>
                         <li><a href="#">{{ Auth::user()->name }}</a>
                             <ul class="sub-menu">
                                 <li>{!! link_to_route('users.show', 'プロフィール設定', ['id' => Auth::id()]) !!}</li>
@@ -64,8 +64,8 @@
                 <div class="col-lg-5">
                     <div class="fs-left">
                         <div class="logo">
-                            <a href="./index.html">
-                                <img src="img/footer-logo.png" alt="">
+                            <a href="/">
+                                <img src="/img/footer-logo.png" alt="">
                             </a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -113,12 +113,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

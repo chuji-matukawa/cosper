@@ -31,3 +31,12 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['show']]);
 });
+
+// 店舗詳細ページ
+
+Route::get('shops/show/{id}', 'ShopsController@show')->name('shops.show');
+Route::get('shops/{id}/reviews', 'ReviewsController@index')->name('shops.api_shop_id');
+
+Route::post('shops/:id/reviews', 'ReviewsController@store')->name('reviews.store');
+Route::resource('reviews', 'ReviewsController', ['only' => ['destroy']]);
+
