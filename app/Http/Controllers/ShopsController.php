@@ -9,7 +9,12 @@ use \App\Review;
 
 class ShopsController extends Controller
 {
-    private $apiKey = "e242f266605eeee7";
+    public $apiKey = "e242f266605eeee7";
+    
+    // public function __construct()
+    // {
+    //     $this->apiKey = config('app.api-key.apikey');
+    // }
     
     public function index(Request $request)
     {

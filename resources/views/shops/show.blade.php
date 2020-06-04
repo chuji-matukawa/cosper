@@ -5,21 +5,21 @@
  <!-- Single Recipe Section Begin -->
     
 <div class="container">
-  <div class="row">
-    <aside class="col-sm-4">
+  <div class="show-content">
+    <aside class="show-image">
       <div class="">
-        <div>
-          <p>{{ $shop->name }}</p>
-        </div>
         <div>
           <img src="{{ $shop->photo }}" class="mr-3" alt="...">
         </div>
+        <div>
+          <p class="shop-title">{{ $shop->name }}</p>
+        </div>
       </div>
     </aside>
-  <div class="clo-sm-8">
-  <table class="table table-borderless">
+  <div class="show-info">
+  <table class="table table-striped">
     <tbody>
-      <tr>
+      <tr class="table-title">
         <th>店舗詳細</th>
       </tr>
       <tr>
@@ -49,34 +49,36 @@
     </tbody>
   </table>
   </div>
-   
+  <div class="clearfix"></div>
   <div>
+    <p class="reviews-count">{!! link_to_route('shops.api_shop_id', '口コミ('.count($reviews) .')', ['id' => $shop->api_shop_id]) !!}</p>
     @if (count($reviews) > 0)
+    
     <ul class="media-list">
     @foreach ($reviews as $review)
         <li class="media mb-3">
             <div class="media-body">
                 <div>
-                    <p>口コミ投稿者の名前と投稿日時</p>
+                    <p>{{ $review->created_at }}</p>
                 </div>
                 <div>
-                    <p class="mb-0">reviewsのコンテンツ</p>
+                    <p class="mb-0">{{ $review->content }}</p>
                 </div>
-                <!--
+                
                 <div>
-                    @if (Auth::id() == $reviews->user_id)
+                    @if (Auth::id() == $review->user_id)
                         <a href="reviewsController@delete">削除</a>
                     @endif
                 </div>
-                -->
             </div>
         </li>
     @endforeach
     </ul>
     @endif
   </div>
-  <p>{!! link_to_route('shops.api_shop_id', 'クチコミを書く', ['id' => $shop->api_shop_id]) !!}</p>
   
+  
+
 </div>
    
 

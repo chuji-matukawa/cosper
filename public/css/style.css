@@ -2240,6 +2240,52 @@ ol {
 	letter-spacing: 0.2px;
 	color: #fff;
 }
+.shop-title {
+	padding: 0;
+	margin: 0;
+}
+.show-image {
+	display: block;
+	padding: 0 30px 30px 0;
+	width: 40%;
+	float: left;
+}
+.show-info {
+	display: block;
+	width: 60%;
+	float: right;
+}
+.show-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 2px;
+}
+
+table, tr {
+	border: 0.3px solid;
+}
+tbody {
+	display: block;
+	width: 100%;
+}
+.table-title {
+	display: block;
+	width: 100%;
+}
+table th {
+	white-space: nowrap;
+}
+.reviews-count {
+	display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 0 12px;
+    border-bottom: 1px solid #d5d5d8;
+    color: #2e2e3b;
+    font-size: 1.28462rem;
+    font-weight: 700;
+}
 
 /* ----------------------- Responsive Media Styles ------------------------*/
 
@@ -2530,6 +2576,15 @@ ol {
 	.search-model-form input {
 		width: 100%;
 	}
+		.show-image {
+	display: block;
+	padding: 0 30px 30px 0;
+	width: 100%;
+	}
+	.show-info {
+		display: block;
+		width: 100%;
+	}
 }
 
 /* Small Mobile */
@@ -2568,5 +2623,14 @@ ol {
 	}
 	.map .map-content {
 		right: calc(50% - 131px);
+	}
+	.show-image {
+	display: block;
+	padding: 0 30px 30px 0;
+	width: 100%;
+	}
+	.show-info {
+		display: block;
+		width: 100%;
 	}
 }
