@@ -30,25 +30,24 @@
     </section>
     <!-- Contact Section End -->
     <div>
-    @if (count($reviews) > 0)
+    @if (isset($reviews))
     <ul class="media-list">
     @foreach ($reviews as $review)
         <li class="media mb-3">
             <div class="media-body">
                 <div>
-                    {!! link_to_route('users.show', $reviews->user_id, ['id' => $reviews->user_id]) !!} <span class="text-muted">posted at {{ $reviews->created_at }}</span>
+                    {!! link_to_route('users.show', optional($reviews)->user_id, ['id' => optional($reviews)->user_id]) !!} <span class="text-muted">posted at {{ optional($reviews)->created_at }}</span>
                 </div>
                 </div>
                 <div>
-                    <p class="mb-0">{{ $review->content }]</p>
+                    <p class="mb-0">{{ optional($reviews)->content }}</p>
                 </div>
-                <!--
+                
                 <div>
-                    @if (Auth::id() == $reviews->user_id)
-                        //ReviewsController@delete  レビューの削除
-                    @endif
+                    <!--@if (Auth::id() == $reviews->user_id)-->
+                    <!--    //ReviewsController@delete  レビューの削除-->
+                    <!--@endif-->
                 </div>
-                -->
             </div>
         </li>
     @endforeach

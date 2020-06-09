@@ -51,7 +51,7 @@
   </div>
   <div class="clearfix"></div>
   <div>
-    <p class="reviews-count">{!! link_to_route('shops.api_shop_id', '口コミ('.count($reviews) .')', ['id' => $shop->api_shop_id]) !!}</p>
+    <p class="reviews-count">{!! link_to_route('shops.api_shop_id', '口コミを書く', ['id' => $shop->api_shop_id]) !!}</p>
     @if (count($reviews) > 0)
     
     <ul class="media-list">

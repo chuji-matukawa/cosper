@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Database\Eloquent\Model;
 use \App\Shop;
 use \App\Review;
 
@@ -13,7 +13,7 @@ class ReviewsController extends Controller
     {
         //dd($shopId);
         
-        $reviews = Review::where('shop_id', $shopId )->get();
+        $reviews = Review::where('shop_id', $shopId )->first();
         
         return view('shops.reviews', [
             'shopId' => $shopId,
@@ -31,7 +31,7 @@ class ReviewsController extends Controller
 
         $reviews = new Review;
         $reviews->user_id = \Auth::id();
-        $reviews->shop_id = $request->†id;
+        $reviews->shop_id = $request->id;
         $reviews->content = $request->content;
         $reviews->save();
 
