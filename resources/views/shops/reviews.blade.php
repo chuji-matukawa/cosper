@@ -38,15 +38,14 @@
                 <div>
                     {!! link_to_route('users.show', optional($reviews)->user_id, ['id' => optional($reviews)->user_id]) !!} <span class="text-muted">posted at {{ optional($reviews)->created_at }}</span>
                 </div>
-                </div>
                 <div>
                     <p class="mb-0">{{ optional($reviews)->content }}</p>
                 </div>
                 
                 <div>
-                    <!--@if (Auth::id() == $reviews->user_id)-->
-                    <!--    //ReviewsController@delete  レビューの削除-->
-                    <!--@endif-->
+                    @if (Auth::id() === $reviews->user_id)
+                        <a href="reviewsController@delete">削除</a>
+                    @endif
                 </div>
             </div>
         </li>

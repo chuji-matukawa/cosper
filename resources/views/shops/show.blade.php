@@ -67,7 +67,7 @@
                 
                 <div>
                     @if (Auth::id() == $review->user_id)
-                        <a href="reviewsController@delete">削除</a>
+                        <a href="ReviewsController@delete">削除</a>
                     @endif
                 </div>
             </div>
