@@ -21,15 +21,17 @@ class ShopsController extends Controller
         $apiData = [];
         $keyword = $request->keyword;
         $areaCode = $request->areaCode;
-        $genre = $request->genre;
+        $genre = $request->categorys;
 
         // APIリクエスト
         $shops = $this->searchShop($keyword, $areaCode, $genre);
         $areas = $this->searchArea();
+        $genres = $this->searchGenre();
         
         return view('shops.index', [
             'apiData' => $shops,
             'areas' => $areas->results->service_area,
+            'genres' => $genres->results->genre,
             
             'keyword' => $keyword,
             'areaCode' => $areaCode,
@@ -51,7 +53,7 @@ class ShopsController extends Controller
         if(!empty($keyword)){
             $params['keyword'] = $keyword;
         }else{
-            $params['keyword'] = "東京駅"; // 東京駅
+            $params['keyword'] = ""; // 東京駅
         }
         
         
@@ -81,6 +83,23 @@ class ShopsController extends Controller
     private function searchArea()
     {
         $basUrl = 'http://webservice.recruit.co.jp/hotpepper/service_area/v1/';
+        
+        $params = [
+            'format' => 'json',
+            'key'    => $this->apiKey,
+        ];
+        
+        $query = http_build_query($params, "", "&");
+        $url = $basUrl . '?' . $query;
+        $response_json = file_get_contents($url);
+        
+        $response = json_decode($response_json);
+        
+        return $response;
+    }
+    private function searchGenre()
+    {
+        $basUrl = 'http://webservice.recruit.co.jp/hotpepper/genre/v1/';
         
         $params = [
             'format' => 'json',

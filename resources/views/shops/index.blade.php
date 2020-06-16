@@ -8,8 +8,12 @@
             <div class="filter-table">
                 <form action="/" method="GET" class="filter-search">
                     <input type="text" placeholder="駅名・店名" name="keyword" value="{{ $keyword }}">
-                    <select id="category">
-                        <option value="">カテゴリー</option>
+                    <select id="category" name="categorys">
+                        @foreach($genres as $genre)
+                            <option value="{{ $genre->code }}" <?php echo ($category == $genre->code) ? "selected":""?>>
+                                {{ $genre->name }}
+                            </option>
+                        @endforeach
                     </select>
                     <select id="tag" name="areaCode">
                         @foreach($areas as $area)
